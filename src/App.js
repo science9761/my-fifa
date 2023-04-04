@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-
+import RestoreIcon from '@mui/icons-material/Restore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 function App() {
+  const [value, setValue] = useState(0);
+  const navigate = useNavigate();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <Paper
+        sx={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          paddingBottom: 1,
+        }}
+        elevation={3}
+      >
+        <BottomNavigation
+          showLabels
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} onClick={() => navigate('')} />
+          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} onClick={() => navigate('/about')} />
+        </BottomNavigation>
+      </Paper>
+    </>
   );
 }
 

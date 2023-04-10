@@ -1,13 +1,20 @@
+import { BottomNavigation, BottomNavigationAction, CssBaseline, Paper } from '@mui/material';
+import { useState } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import RestoreIcon from '@mui/icons-material/Restore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import SettingsIcon from '@mui/icons-material/Settings';
+import { Box } from '@mui/material';
+
 function App() {
-  const [value, setValue] = useState(0);
+  const [tabMenu, setTabMenu] = useState(0);
   const navigate = useNavigate();
   return (
     <>
+      <CssBaseline />
+      <Box>
+        <Outlet />
+      </Box>
       <Paper
         sx={{
           position: 'fixed',
@@ -20,13 +27,14 @@ function App() {
       >
         <BottomNavigation
           showLabels
-          value={value}
+          value={tabMenu}
           onChange={(event, newValue) => {
-            setValue(newValue);
+            setTabMenu(newValue);
           }}
         >
-          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} onClick={() => navigate('')} />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} onClick={() => navigate('/about')} />
+          <BottomNavigationAction label="이적시장" icon={<RestoreIcon />} onClick={() => navigate('')} />
+          <BottomNavigationAction label="마이팀" icon={<FavoriteIcon />} onClick={() => navigate('/my-team')} />
+          <BottomNavigationAction label="관리자모드" icon={<SettingsIcon />} onClick={() => navigate('/settings')} />
         </BottomNavigation>
       </Paper>
     </>

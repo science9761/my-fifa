@@ -1,21 +1,26 @@
 import { createBrowserRouter } from 'react-router-dom';
-// import About from './containers/About';
-// import Home from './containers/Home';
 import App from './App';
+import Home from './containers/Home';
+import MyTeam from './containers/MyTeam';
+import Settings from './containers/Settings';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     children: [
-    //   {
-    //     path: '',
-    //     element: <Home />,
-    //   },
-    //   {
-    //     path: 'about',
-    //     element: <About />,
-    //   },
+      {
+        path: '',
+        element: <Home />,
+      },
+      {
+        path: 'my-team',
+        element: <MyTeam />,
+      },
+      {
+        path: 'settings',
+        element: <Settings />,
+      },
     ],
   },
 ], {

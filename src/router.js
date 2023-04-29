@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
-import Home from './containers/Home';
-import MyTeam from './containers/MyTeam';
-import Settings from './containers/Settings';
+import Home from './pages/Home';
+import MyTeam from './pages/MyTeam';
+import Settings from './pages/Settings';
 
 const router = createBrowserRouter([
   {

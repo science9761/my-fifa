@@ -4,6 +4,11 @@ import { useState } from "react";
 function Teams() {
   const [teams, setTeams] = useState([
     {
+      name: '심시티',
+      league: '프리미어리그',
+      nation: '영국',
+    },
+    {
       name: '맨체스터유나이티드',
       league: '프리미어리그',
       nation: '영국',
@@ -25,22 +30,23 @@ function Teams() {
     },
   ]);
 
-  const deleteTeam = (team) => {
-    alert(team);
+  const deleteTeam = (name) => {
+    const removedTeams = teams.filter((t)=>t.name!==name);
+    setTeams(removedTeams);
   }
 
   return (
     <Box>
 
       {
-        teams.map((team) => (
+        teams.map((t) => (
           <Box sx={{ border: '1px solid gray', borderRadius: '7px', padding: '20px', margin: '10px' }}>
-            <Box>{team.league}</Box>
-            <Box>{team.nation}</Box>
-            <Box>{team.name}</Box>
+            <Box>{t.league}</Box>
+            <Box>{t.nation}</Box>
+            <Box>{t.name}</Box>
             <Button
               variant="contained"
-              onClick={() => deleteTeam(team.name)}
+              onClick={() => deleteTeam(t.name)}
             >
               삭제
             </Button>

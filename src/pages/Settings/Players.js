@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useState } from "react";
 
 function Players() {
@@ -16,9 +16,19 @@ function Players() {
         {
             name: '헤리케인',
             nation: '영국',
-            season: '흥민이랑 친구먹음'
-        }
+            season: '87'
+        },
+        {
+            name: '날강두',
+            nation: '한반도',
+            season: 'WC22'
+        },
     ]);
+    const deletePlayer = (name) => {
+        const removedPlayers = players.filter((p) => p.name !== name);
+        setPlayers(removedPlayers);
+
+    }
 
     return (
         <Box>
@@ -29,6 +39,13 @@ function Players() {
                         <Box>{p.season}</Box>
                         <Box>{p.nation}</Box>
                         <Box>{p.name}</Box>
+                        <Button
+                            variant="contained"
+                            onClick={() => deletePlayer(p.name)}
+                        >
+                            삭제
+                        </Button>
+
                     </Box>
                 ))
             }
@@ -36,5 +53,4 @@ function Players() {
 
     )
 }
-
 export default Players;

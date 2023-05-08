@@ -1,6 +1,6 @@
 import { Box, Button } from "@mui/material";
 import { useState } from "react";
-import { defaultPlayers } from "../../data/defaultPlayers";
+import { defaultPlayers } from "../../../data/defaultPlayers";
 
 function Players() {
     const [players, setPlayers] = useState(defaultPlayers);

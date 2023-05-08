@@ -1,12 +1,12 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
-import { defaultTeams } from "../../data/defaultTeams";
+import { defaultTeams } from "../../../data/defaultTeams";
 
 function Teams() {
   const [teams, setTeams] = useState(defaultTeams);
 
   const deleteTeam = (name) => {
-    const removedTeams = teams.filter((t)=>t.name!==name);
+    const removedTeams = teams.filter((t) => t.name !== name);
     setTeams(removedTeams);
   }
 

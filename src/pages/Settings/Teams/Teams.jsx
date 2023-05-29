@@ -25,7 +25,7 @@ function Teams() {
     >
       팀 추가
     </Button>
-    <Box>
+    <Box sx={{margin:'10px'}}>
       {
         teams.map((team,i) => (
           <TeamCard team={team} key={i}/>

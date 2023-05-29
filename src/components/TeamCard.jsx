@@ -1,19 +1,57 @@
-import { Box, Button } from "@mui/material";
+import styled from "styled-components";
 
-function TeamCard({ team }) {
+const TeamLayout = styled.div`
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border-radius: 10px;
+
+  display: flex;
+  padding: 10px;
+`;
+
+const TeamImage = styled.img`
+  width: 100px;
+  height: 100px;
+`;
+
+const TeamInfo = styled.div`
+  padding: 10px;
+`;
+
+const TeamName = styled.div`
+  font-size: 30px;
+`;
+
+const TeamLeague = styled.div`
+  display: flex;
+`;
+
+const TeamLeagueName = styled.div`
+  font-size: 15px;
+  color: gray;
+`;
+
+const TeamNation = styled.img`
+  height: 20px;
+  width: 20px;
+`;
+
+function TeamCard({team}) {
+
   return (
-    <Box sx={{ border: '1px solid gray', borderRadius: '7px', padding: '20px', margin: '10px' }}>
-      <Box>{team.league}</Box>
-      <Box>{team.nation}</Box>
-      <Box>{team.name}</Box>
-      <Button
-          variant="contained"
-          onClick={() => deleteTeam(team.name)}
-      >
-          삭제
-      </Button>
-    </Box>
-  )
+    <TeamLayout>
+      <TeamImage src={team.logoImage} />
+
+      <TeamInfo>
+        <TeamName>{team.name}</TeamName>
+        <TeamLeague>
+          <TeamLeagueName>{team.league}</TeamLeagueName>
+          <TeamNation
+            src={`https://www.countryflagicons.com/FLAT/64/${team.nation}.png`}
+          />
+        </TeamLeague>
+      </TeamInfo>
+    </TeamLayout>
+  );
 }
 
 export default TeamCard;

@@ -12,7 +12,7 @@ function HomeLayout() {
   return (
     <>
       <CssBaseline />
-      <Box>
+      <Box sx={{marginBottom:'100px'}}>
         <Outlet />
       </Box>
       <Paper

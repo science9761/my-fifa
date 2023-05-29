@@ -1,33 +1,41 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Dialog, Typography } from "@mui/material";
 import { useState } from "react";
 import { defaultTeams } from "../../../data/defaultTeams.jsx";
+import TeamCard from "../../../components/TeamCard.jsx";
 
 function Teams() {
   const [teams, setTeams] = useState(defaultTeams);
+  const [open, setOpen] = useState(false);
 
   const deleteTeam = (name) => {
     const removedTeams = teams.filter((t) => t.name !== name);
     setTeams(removedTeams);
   }
 
+  const handleClose = () => {
+    setOpen(!open);
+  }
+
   return (
+    <>
+    <Button 
+      onClick={handleClose}
+      variant="contained"
+      color="success"
+    >
+      팀 추가
+    </Button>
     <Box>
       {
-        teams.map((t) => (
-          <Box sx={{ border: '1px solid gray', borderRadius: '7px', padding: '20px', margin: '10px' }}>
-            <Box>{t.league}</Box>
-            <Box>{t.nation}</Box>
-            <Box>{t.name}</Box>
-            <Button
-              variant="contained"
-              onClick={() => deleteTeam(t.name)}
-            >
-              삭제
-            </Button>
-          </Box>
+        teams.map((team,i) => (
+          <TeamCard team={team} key={i}/>
         ))
       }
     </Box>
+    <Dialog onClose={handleClose} open={open}>
+      하이
+    </Dialog>
+    </>
   )
 }
 export default Teams;

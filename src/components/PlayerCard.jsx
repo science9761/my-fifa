@@ -14,9 +14,39 @@ const PlayerImage = styled.img`
   height: 150px;
 `;
 
+const PlayerNameWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`
+
+const Season = styled.div`
+  border-radius: 5px;
+  border: 1px solid gray;
+
+  padding: 2px 8px 2px 8px;
+`
+
 const PlayerName= styled.div`
   font-size: 24px;
   font-weight: 700;
+`
+
+const PhysicalWrapper = styled.div`
+  display: flex;
+  gap: 5px;
+`
+
+const StatWrapper = styled.div`
+
+`
+
+const StatName = styled.div`
+
+`
+
+const StatNumber = styled.div`
+
 `
 
 function PlayerCard({player}){
@@ -25,18 +55,34 @@ function PlayerCard({player}){
     <PlayerWrapper>
       <PlayerImage src={player.image}/>
       <div>
-         <PlayerName>{player.name}</PlayerName>
+          <PlayerNameWrapper>
+            <PlayerName>{player.name}</PlayerName>
+            <Season>{player.season}</Season>
+          </PlayerNameWrapper>
          <img src={`https://www.countryflagicons.com/FLAT/64/${player.nation}.png`}/>
-
-         <div>국적 {player.nation}</div>
-         <div>시즌 {player.season}</div>
-         <div>{player.height}CM</div>
-         <div>{player.weight}KG</div>
+         <PhysicalWrapper>
+          <div>{player.height}cm</div>
+          <div>{player.weight}kg</div>
+         </PhysicalWrapper>
          <div>팀 {player.team}</div>
          <div>포지션 {player.position}</div>
          <div>주발 {player.foot}</div>
-         <div>속도 {player.stat.speed}</div>
-         <div>슈팅 {player.stat.shoot}</div>
+         <StatWrapper>
+            <StatName>
+              속도
+            </StatName>
+            <StatNumber>
+              {player.stat.speed}
+            </StatNumber>
+         </StatWrapper>
+         <StatWrapper>
+            <StatName>
+              슈팅
+            </StatName>
+            <StatNumber>
+             {player.stat.shoot}
+            </StatNumber>
+         </StatWrapper>
          <div>패스 {player.stat.pass}</div>
          <div>드리블 {player.stat.dribble}</div>
          <div>수비 {player.stat.defence}</div>
